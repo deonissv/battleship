@@ -22,7 +22,7 @@ class Board:
 
     def get_damaged_ship(self):
         """
-        Returs the first ship object and a list of damaged squares of this ship
+        Returns the first ship object and a list of damaged squares of this ship
         """
         for ship in self._ships:
             damaged_units = ship.get_damaged_units()
@@ -60,7 +60,7 @@ class Board:
 
     def get_unavailable_squares(self):
         """
-        Returns a set of squares that cannot be choosen as a target
+        Returns a set of squares that cannot be chosen as a target
         """
         unavailable_squares = set()
         for ship in self._ships:
@@ -119,9 +119,9 @@ class Board:
 
     def shot(self, point):
         """
-        Checks if the given point can be choosen as a target.
+        Checks if the given point can be chosen as a target.
         Returns None if point is improper
-                True if any ship was hitted
+                True if any ship was hit
                 False if missed
         """
         if point in self.get_unavailable_squares():

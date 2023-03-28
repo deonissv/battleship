@@ -234,21 +234,19 @@ class Game():
                         board_player_line += self.add_whitespace(board_player[x][y])
                     else:
                         if (x, y) in self._board_player.get_area():
-                            board_player_line += self.add_whitespace(LEGEND['coursor_ship'])
+                            board_player_line += self.add_whitespace(LEGEND['cursor_ship'])
                         else:
-                            board_player_line += self.add_whitespace(LEGEND['coursor'])
+                            board_player_line += self.add_whitespace(LEGEND['cursor'])
                     board_bot_line += self.add_whitespace(board_bot[x][y])
                 else:
                     board_player_line += self.add_whitespace(board_player[x][y])
                     if (x, y) in bot_squares:
                         if (x, y) in self._board_bot.get_damaged_units():
-                            board_bot_line += self.add_whitespace(LEGEND['coursor_damaged_ship'])
-                        elif (x, y) in self._board_bot.get_area():
-                            board_bot_line += self.add_whitespace(LEGEND['coursor_ship'])
+                            board_bot_line += self.add_whitespace(LEGEND['cursor_damaged_ship'])
                         elif (x, y) in self._board_bot.get_checked_squares():
-                            board_bot_line += self.add_whitespace(LEGEND['coursor_miss'])
+                            board_bot_line += self.add_whitespace(LEGEND['cursor_miss'])
                         else:
-                            board_bot_line += self.add_whitespace(LEGEND['coursor'])
+                            board_bot_line += self.add_whitespace(LEGEND['cursor'])
                     else:
                         board_bot_line += self.add_whitespace(board_bot[x][y])
             print(self.add_indent(board_player_line, board_bot_line))

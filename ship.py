@@ -54,7 +54,7 @@ class Ship:
 
     def get_surroundings(self):
         """
-        Returns a set of squares that boders on a area of a ship
+        Returns a set of squares that borders on a area of a ship
         """
         return self._surroundings
 
@@ -66,7 +66,7 @@ class Ship:
 
     def get_unavailable_squares(self):
         """
-        Returns a set of squares that cannot be choosen as a target
+        Returns a set of squares that cannot be chosen as a target
         """
         if self.is_alive():
             return self._damaged_units
