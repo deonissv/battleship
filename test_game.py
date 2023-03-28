@@ -3,47 +3,6 @@ from pytest import raises
 from errors import TestError
 
 
-def test_get_input_dirr_too_long(monkeypatch):
-    def inp_text(*args):
-        return 'xx'
-
-    def return_text(text):
-        raise TestError()
-
-    monkeypatch.setattr('builtins.input', inp_text)
-    monkeypatch.setattr('builtins.print', return_text)
-    game = Game()
-    with raises(TestError):
-        game.get_input_shot('a', 'b')
-
-
-def test_get_input_dirr_not_in_dirr(monkeypatch):
-    def inp_text(*args):
-        return 'q'
-
-    def return_text(text):
-        raise TestError()
-
-    monkeypatch.setattr('builtins.input', inp_text)
-    monkeypatch.setattr('builtins.print', return_text)
-    game = Game()
-    with raises(TestError):
-        game.get_input_shot('a', 'b')
-
-
-def test_get_input_dirr_typical(monkeypatch):
-    def inp_text(*args):
-        return 'x'
-
-    def return_text(text):
-        raise TestError()
-
-    monkeypatch.setattr('builtins.input', inp_text)
-    monkeypatch.setattr('builtins.print', return_text)
-    game = Game()
-    assert game.get_input_shot('a', 'b') == 'x'
-
-
 def test_get_input_point_too_long(monkeypatch):
 
     def inp_text(*args):
@@ -52,11 +11,11 @@ def test_get_input_point_too_long(monkeypatch):
     def return_text(text):
         raise TestError()
 
-    monkeypatch.setattr('builtins.input', inp_text)
+    monkeypatch.setattr('game.Game.get_input', inp_text)
     monkeypatch.setattr('builtins.print', return_text)
     game = Game()
     with raises(TestError):
-        game.get_input_point('a', 'b')
+        game.get_input_shot()
 
 
 def test_get_input_point_too_short(monkeypatch):
@@ -66,11 +25,11 @@ def test_get_input_point_too_short(monkeypatch):
     def return_text(text):
         raise TestError()
 
-    monkeypatch.setattr('builtins.input', return_text)
+    monkeypatch.setattr('game.Game.get_input', inp_text)
     monkeypatch.setattr('builtins.print', return_text)
     game = Game()
     with raises(TestError):
-        game.get_input_point('a', 'b')
+        game.get_input_shot()
 
 
 def test_get_input_point_invalid_letter(monkeypatch):
@@ -80,34 +39,31 @@ def test_get_input_point_invalid_letter(monkeypatch):
     def return_text(text):
         raise TestError()
 
-    monkeypatch.setattr('builtins.input', return_text)
+    monkeypatch.setattr('game.Game.get_input', inp_text)
     monkeypatch.setattr('builtins.print', return_text)
     game = Game()
     with raises(TestError):
-        game.get_input_point('a', 'b')
+        game.get_input_shot()
 
 
 def test_get_input_point_not_a_number(monkeypatch):
-    def inp_text(*args):
-        return 'zz'
-
     def return_text(text):
         raise TestError()
 
-    monkeypatch.setattr('builtins.input', return_text)
+    monkeypatch.setattr('game.Game.get_input', return_text)
     monkeypatch.setattr('builtins.print', return_text)
     game = Game()
     with raises(TestError):
-        game.get_input_point('a', 'b')
+        game.get_input_shot()
 
 
 def test_get_input_point_typical(monkeypatch):
     def inp_text(*args):
-        return 'a1'
+        return 'f'
 
-    monkeypatch.setattr('builtins.input', inp_text)
+    monkeypatch.setattr('game.Game.get_input', inp_text)
     game = Game()
-    assert game.get_input_point() == (0, 1)
+    assert game.get_input_shot() == (0, 0)
 
 
 def test_add_indent():
